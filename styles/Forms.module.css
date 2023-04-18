@@ -1,0 +1,12 @@
+.loginForm{
+    @apply flex flex-col justify-center items-center h-screen gap-6 font-mono
+}
+.inp{
+    @apply input input-bordered input-lg w-full max-w-lg
+}
+.labl{
+    @apply flex flex-col gap-1 select-none
+}
+.sel{
+    @apply select select-bordered select-lg w-full max-w-lg
+}
