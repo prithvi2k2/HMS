@@ -29,7 +29,7 @@ export default async function login(req, res) {
                     httpOnly: true,
                     secure: true,
                     sameSite: "strict",
-                    maxAge: 60*60*24*7, //Need to verify auto-expiration of cookies
+                    maxAge: 60*60*24*7, // Need to verify auto-expiration of cookies
                     path:"/",
                 })
 

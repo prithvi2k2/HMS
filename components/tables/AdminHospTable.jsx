@@ -6,6 +6,10 @@ import AdmnAddHosp from "../forms/AdminAddHosp"
 export default function Admin2HospTable() {
     const [selectAll, setSelectAll] = useState(false)
     const [selectedList, setSelectedList] = useState({})
+    const [vRole, setVRole] = useState("doctors") // role which is currently being Viewed, used for switching roles
+    const roleSetter = (clickedRole) => {
+        if (clickedRole != vRole) setVRole(clickedRole)
+    }
 
     useEffect(() => {
         let newSelectedList = {}
@@ -16,7 +20,7 @@ export default function Admin2HospTable() {
         }
         setSelectedList(newSelectedList)
     }, [selectAll])
-    
+
     // Below feature effect(s) has bugs and impacting performance,
     // will be rewritten later as they have low priority & will be fixed later
     // useEffect(()=>{
@@ -27,7 +31,9 @@ export default function Admin2HospTable() {
     // },[selectedList])
 
     return <div>
-        <ActionBar />
+        {/* All actions like ADD, DELETE, UPDATE etc go here */}
+        <ActionBar role={vRole} roleSetter={roleSetter} />
+        {/*  */}
         <div className="overflow-x-auto w-full">
             <table className="table w-full">
                 {/* HEAD */}
@@ -104,20 +110,41 @@ function TableRow({ data, selectedList, setSelectedList }) {
     </tr>
 }
 
-function ActionBar() {
+function ActionBar({ role, roleSetter }) {
     return (
-        // simply add 'btn-disabled' class according to state to disable btns if not required
-        <div className="btn-group justify-center m-5 mb-2">
-            <label className="btn btn-success shadow-lg modal-btn" htmlFor="add">
-                Add</label>
-            <Modal id="add"><AdmnAddHosp /></Modal>
+        <div className="flex flex-wrap justify-center m-5 gap-10">
+            {/* SWITCH ROLES */}
+            <details className="dropdown dropdown-bottom dropdown-end">
+                <summary className="btn btn-outline w-72">
+                    Viewing ROLE : <div className="badge text-accent">{role}</div>
+                </summary>
+                <ul className="shadow menu dropdown-content bg-base-100 z-[1] rounded-box outline-accent outline-double gap-1 m-2">
+                    <button className={`btn btn-sm ${role == 'doctors' ? "btn-accent" : "btn-outline"}`} onClick={() => roleSetter('doctors')}>
+                        Doctors</button>
+                    <button className={`btn btn-sm ${role == 'patients' ? "btn-accent" : "btn-outline"}`} onClick={() => roleSetter('patients')}>
+                        Patients</button>
+                    <button className={`btn btn-sm ${role == 'nurses' ? "btn-accent" : "btn-outline"}`} onClick={() => roleSetter('nurses')}>
+                        Nurses</button>
+                    <button className={`btn btn-sm ${role == 'pharmacists' ? "btn-accent" : "btn-outline"}`} onClick={() => roleSetter('pharmacists')}>
+                        Pharmacists</button>
+                    <button className={`btn btn-sm ${role == 'receptionists' ? "btn-accent" : "btn-outline"}`} onClick={() => roleSetter('receptionists')}>
+                        Receptionists</button>
+                </ul>
+            </details>
 
-            <label className="btn btn-info shadow-lg modal-btn" htmlFor="edit">
-                Edit</label>
-            <label className="btn btn-warning shadow-lg" htmlFor="revoke">
-                Revoke</label>
-            <label className="btn btn-error shadow-lg" htmlFor="delete">
-                Delete</label>
+            {/* // simply add 'btn-disabled' class according to state to disable btns if not required */}
+            <div className="btn-group justify-center">
+                <label className="btn btn-success shadow-lg modal-btn" htmlFor="add">
+                    Add</label>
+                <Modal id="add"><AdmnAddHosp /></Modal>
+
+                <label className="btn btn-info shadow-lg modal-btn" htmlFor="edit">
+                    Edit</label>
+                <label className="btn btn-warning shadow-lg" htmlFor="revoke">
+                    Revoke</label>
+                <label className="btn btn-error shadow-lg" htmlFor="delete">
+                    Delete</label>
+            </div>
         </div>
     )
 }

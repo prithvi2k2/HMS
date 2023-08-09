@@ -8,7 +8,7 @@ import { FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
 export default function Navbar() {
     const { context } = useAppContext();
     return (
-        <header className="navbar bg-base-100 shadow-lg font-semibold">
+        <header className="navbar bg-base-100 shadow-lg font-semibold z-[50]">
             <MenuCompact context={context} />
             <div className='navbar-end lg:navbar-start'>
                 <Link href="/" className="btn btn-ghost btn-lg normal-case text-xl tracking-widest">
@@ -38,7 +38,7 @@ function MenuItems({ context }) {
 
 // MenuCompact rendered for mobile devices
 function MenuCompact({ context }) {
-    return <div className='navbar-start lg:hidden flex'>
+    return <div className='navbar-start lg:hidden flex z-50'>
         <div className='dropdown'>
             <label tabIndex="0" className="btn btn-lg btn-ghost lg:hidden">
                 <HiMenuAlt1 />

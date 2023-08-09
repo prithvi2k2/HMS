@@ -1,3 +1,5 @@
+// LEGACY
+
 // Custom responsive modal - centered on large screens, moves to bottom on smaller screens
 
 export default function Modal({ children, id }) {
@@ -12,8 +14,8 @@ export default function Modal({ children, id }) {
                 <div className="modal-box">
                     <label 
                         htmlFor={id} 
-                        className="transition-all btn btn-circle absolute right-2 top-2 bg-transparent hover:bg-red-600 border-red-500">
-                        X
+                        className="transition-all btn btn-circle absolute right-2 top-2 mr-2 bg-transparent hover:bg-red-600 border-red-500">
+                        ❌
                     </label>
                     {children}
                 </div>

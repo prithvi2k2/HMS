@@ -34,8 +34,8 @@ export async function middleware(req) {
 		return next();
 	}
 
-
-	if (pathIs('/admin')) {
+	
+	if (pathIs('/admin') || pathIs('/doctors') || pathIs('/patients')) {
 		if (!jwt) {
 			setPath('/login');
 			return redirect(); // previously rewrite()
@@ -55,7 +55,8 @@ export async function middleware(req) {
 export const config = {
 	matcher: [
 		'/admin/:path*',
-		'/doctor/:path*',
+		'/doctors/:path*',
+		'/patients/:path*',
 		'/login',
 		// might be unnecessary, stackoverflow whether its possible, ie can we contradictarily block and access the same client??
 		//'/api/:path*', 

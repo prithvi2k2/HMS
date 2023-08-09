@@ -23,8 +23,12 @@ export default function Logout() {
 
     return (
         <Layout>
-            <div className='flex flex-col h-screen w-screen justify-center items-center'>
-                <button className='btn btn-info loading'>Logging Out</button>
+            <div className='flex h-screen justify-center items-center'>
+                <button className="btn">
+                    <span className="loading loading-spinner"></span>
+                    logging out
+                </button>
+
             </div>
         </Layout>
     )

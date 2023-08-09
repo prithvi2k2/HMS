@@ -63,10 +63,12 @@ export default function Login() {
                 Role
                 <select className={sel} onChange={e => setRole(e.target.value)} value={role || ''} required>
                     <option value="" defaultValue hidden>select your role</option>
+                    <option value="patients">Patient</option>
+                    <option value="doctors">Doctor</option>
+                    <option value="pharmacists">Pharmacist</option>
+                    <option value="nurses">Nurse</option>
+                    <option value="receptionists">Receptionist</option>
                     <option value="admin">Super Admin</option>
-                    <option value="hospitals">Hospital/Clinic Admin</option>
-                    <option value="specialistSr">Senior Radiologist</option>
-                    <option value="specialistJr">Radiologist</option>
 
                 </select>
             </label>

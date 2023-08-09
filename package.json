@@ -1,5 +1,5 @@
 {
-  "name": "radiology-next-app",
+  "name": "hms-plus-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@types/node": "^18.15.11",
-    "argon2": "^0.28.5",
+    "argon2": "^0.27.1",
     "cookie": "^0.5.0",
     "form-parse": "^0.1.0",
     "jose": "^4.13.2",
@@ -25,9 +25,9 @@
   "devDependencies": {
     "@types/react": "^18.0.35",
     "autoprefixer": "^10.4.7",
-    "daisyui": "^2.15.4",
+    "daisyui": "^3.1.7",
     "eslint": "8.17.0",
-    "eslint-config-next": "^13.3.0",
+    "eslint-config-next": "^12.0.4",
     "postcss": "^8.4.5",
     "react-icons": "^4.4.0",
     "tailwindcss": "^3.1.3"
