@@ -24,7 +24,7 @@ export default async function login(req, res) {
                 // If password matches, generate jwt
                 const jwtToken = genJWT(user)
 
-                // Setting httpOnly cookie
+                // Setting httpOnly cookie - prevents client-side scripts from accessing the data
                 const serialised = serialize("accessToken", jwtToken, {
                     httpOnly: true,
                     secure: true,
